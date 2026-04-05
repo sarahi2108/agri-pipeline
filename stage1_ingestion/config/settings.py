@@ -23,7 +23,12 @@ for d in [DATA_RAW, DATA_PROCESSED, LOGS_DIR]:
 class FAOConfig:
     base_url: str = "https://fenixservices.fao.org/faostat/api/v1"
     crops: List[str] = field(default_factory=lambda: [
-        "Grapes"
+        "Grapes",
+    "Blueberries",
+    "Avocados",
+    "Tomatoes",
+    "Strawberries",
+    "Citrus Fruit, Total",
     ])
     elements: List[str] = field(default_factory=lambda: [
         "Area harvested",   # HA
