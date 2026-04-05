@@ -6,6 +6,7 @@ No API key required — free and open.
 Docs: https://open-meteo.com/en/docs/historical-weather-api
 """
 
+import time
 from datetime import datetime, date
 from typing import Any, Dict, List
 
@@ -28,12 +29,12 @@ class WeatherIngester(BaseIngester):
         for location_name, (lat, lon) in self.cfg.locations.items():
             self.log.info("Fetching weather for %s (%.2f, %.2f)", location_name, lat, lon)
             params = {
-                "latitude":         lat,
-                "longitude":        lon,
-                "start_date":       self.cfg.start_date,
-                "end_date":         date.today().isoformat(),
-                "daily":            ",".join(self.cfg.variables),
-                "timezone":         "UTC",
+                "latitude":   lat,
+                "longitude":  lon,
+                "start_date": self.cfg.start_date,
+                "end_date":   date.today().isoformat(),
+                "daily":      ",".join(self.cfg.variables),
+                "timezone":   "UTC",
             }
             try:
                 resp = self.get(self.cfg.base_url, params=params, timeout=self.cfg.timeout)
@@ -42,7 +43,7 @@ class WeatherIngester(BaseIngester):
                 self.log.info("  → %d days for %s", n_days, location_name)
             except Exception as exc:
                 self.log.error("Weather fetch failed for %s: %s", location_name, exc)
-
+            time.sleep(2)
         return results
 
     def parse(self, raw: Dict[str, Any]) -> pd.DataFrame:
@@ -58,29 +59,27 @@ class WeatherIngester(BaseIngester):
                 if var in daily:
                     df[var] = daily[var]
 
-            # Add growing season flag (Oct–Apr for Southern hemisphere; Apr–Oct Northern)
             lat = payload.get("latitude", 0)
             df["month"] = df["date"].dt.month
-            if lat < 0:  # Southern hemisphere
+            if lat < 0:
                 df["in_growing_season"] = df["month"].isin([10, 11, 12, 1, 2, 3, 4])
             else:
                 df["in_growing_season"] = df["month"].isin([4, 5, 6, 7, 8, 9, 10])
 
-            # Melt to long format matching standard schema
             id_vars = ["date", "month", "in_growing_season"]
             value_vars = [v for v in self.cfg.variables if v in df.columns]
             df_long = df.melt(id_vars=id_vars, value_vars=value_vars,
                               var_name="metric", value_name="value")
             df_long = df_long.dropna(subset=["value"])
 
-            df_long["source"]   = self.SOURCE_NAME
-            df_long["location"] = location_name
-            df_long["lat"]      = payload.get("latitude")
-            df_long["lon"]      = payload.get("longitude")
-            df_long["year"]     = df_long["date"].dt.year
-            df_long["country"]  = self._location_to_country(location_name)
-            df_long["crop"]     = "all"  # weather is region-level, not crop-level
-            df_long["unit"]     = df_long["metric"].map(self._unit_map())
+            df_long["source"]      = self.SOURCE_NAME
+            df_long["location"]    = location_name
+            df_long["lat"]         = payload.get("latitude")
+            df_long["lon"]         = payload.get("longitude")
+            df_long["year"]        = df_long["date"].dt.year
+            df_long["country"]     = self._location_to_country(location_name)
+            df_long["crop"]        = "all"
+            df_long["unit"]        = df_long["metric"].map(self._unit_map())
             df_long["ingested_at"] = datetime.utcnow()
 
             dfs.append(df_long)
@@ -95,20 +94,19 @@ class WeatherIngester(BaseIngester):
     @staticmethod
     def _location_to_country(location: str) -> str:
         mapping = {
-            "Ica_Peru": "Peru",
-            "Maule_Chile": "Chile",
+            "Ica_Peru":        "Peru",
+            "Maule_Chile":     "Chile",
             "Western_Cape_SA": "South Africa",
-            "Murcia_Spain": "Spain",
-            "California_US": "United States of America",
+            "Murcia_Spain":    "Spain",
+            "California_US":   "United States of America",
         }
         return mapping.get(location, location.split("_")[0])
 
     @staticmethod
     def _unit_map() -> Dict[str, str]:
         return {
-            "temperature_2m_max":           "°C",
-            "temperature_2m_min":           "°C",
-            "precipitation_sum":            "mm",
-            "et0_fao_evapotranspiration":   "mm",
-            "soil_moisture_0_to_7cm":       "m³/m³",
+            "temperature_2m_max":         "°C",
+            "temperature_2m_min":         "°C",
+            "precipitation_sum":          "mm",
+            "et0_fao_evapotranspiration": "mm",
         }

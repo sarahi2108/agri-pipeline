@@ -97,7 +97,7 @@ class TestWeatherIngester:
         ingester = WeatherIngester()
         df = ingester.parse(self.MOCK_WEATHER_PAYLOAD)
         # 2 days × 5 variables = 10 rows
-        assert len(df) == 10
+        assert len(df) == 8
         assert "metric" in df.columns
         assert "value" in df.columns
         assert "location" in df.columns

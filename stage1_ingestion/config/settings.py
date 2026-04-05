@@ -23,8 +23,7 @@ for d in [DATA_RAW, DATA_PROCESSED, LOGS_DIR]:
 class FAOConfig:
     base_url: str = "https://fenixservices.fao.org/faostat/api/v1"
     crops: List[str] = field(default_factory=lambda: [
-        "Grapes", "Blueberries", "Avocados", "Tomatoes",
-        "Strawberries", "Citrus Fruit, Total"
+        "Grapes"
     ])
     elements: List[str] = field(default_factory=lambda: [
         "Area harvested",   # HA
@@ -47,7 +46,7 @@ class USDAConfig:
     api_key: str = field(default_factory=lambda: os.getenv("USDA_API_KEY", "DEMO_KEY"))
     commodities: List[str] = field(default_factory=lambda: ["GRAPES", "BLUEBERRIES", "STRAWBERRIES"])
     stat_categories: List[str] = field(default_factory=lambda: ["AREA HARVESTED", "PRODUCTION", "PRICE RECEIVED"])
-    timeout: int = 30
+    timeout: int = 60
 
 
 # ── Open-Meteo weather ────────────────────────────────────────────────────────
@@ -64,10 +63,9 @@ class WeatherConfig:
     })
     variables: List[str] = field(default_factory=lambda: [
         "temperature_2m_max",
-        "temperature_2m_min",
-        "precipitation_sum",
-        "et0_fao_evapotranspiration",
-        "soil_moisture_0_to_7cm",
+    "temperature_2m_min",
+    "precipitation_sum",
+    "et0_fao_evapotranspiration",
     ])
     start_date: str = "2000-01-01"
     timeout: int = 60
