@@ -1,0 +1,10 @@
+artifact_location: file:///Users/sarahilyas/agri-pipeline/stage3_models/mlruns/669867039821191447/models/m-abf713e4e0ec4031948dcb08ef4338c6/artifacts
+creation_timestamp: 1775418852418
+experiment_id: '669867039821191447'
+last_updated_timestamp: 1775418855772
+model_id: m-abf713e4e0ec4031948dcb08ef4338c6
+model_type: null
+name: model
+source_run_id: 69194a6b61d744e1b6b52dc5295f0bbd
+status: 2
+status_message: null

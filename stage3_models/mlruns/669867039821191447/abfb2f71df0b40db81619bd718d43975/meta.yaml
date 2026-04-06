@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/sarahilyas/agri-pipeline/stage3_models/mlruns/669867039821191447/abfb2f71df0b40db81619bd718d43975/artifacts
+end_time: 1775420039876
+entry_point_name: ''
+experiment_id: '669867039821191447'
+lifecycle_stage: active
+run_id: abfb2f71df0b40db81619bd718d43975
+run_name: xgboost_tomatoes
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775419741823
+status: 3
+tags: []
+user_id: sarahilyas

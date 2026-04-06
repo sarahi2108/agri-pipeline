@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/sarahilyas/agri-pipeline/stage3_models/mlruns/669867039821191447/6be0c3c1c9844057b2865569c502e798/artifacts
+end_time: 1775419232274
+entry_point_name: ''
+experiment_id: '669867039821191447'
+lifecycle_stage: active
+run_id: 6be0c3c1c9844057b2865569c502e798
+run_name: xgboost_citrus_fruit,_total
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775418961430
+status: 3
+tags: []
+user_id: sarahilyas

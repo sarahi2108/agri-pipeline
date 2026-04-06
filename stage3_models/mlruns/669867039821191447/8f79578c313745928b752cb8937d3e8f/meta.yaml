@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/sarahilyas/agri-pipeline/stage3_models/mlruns/669867039821191447/8f79578c313745928b752cb8937d3e8f/artifacts
+end_time: 1775419741818
+entry_point_name: ''
+experiment_id: '669867039821191447'
+lifecycle_stage: active
+run_id: 8f79578c313745928b752cb8937d3e8f
+run_name: xgboost_strawberries
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775419487689
+status: 3
+tags: []
+user_id: sarahilyas

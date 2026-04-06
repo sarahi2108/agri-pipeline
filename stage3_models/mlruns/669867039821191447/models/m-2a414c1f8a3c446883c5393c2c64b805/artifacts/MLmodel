@@ -1,0 +1,22 @@
+artifact_path: file:///Users/sarahilyas/agri-pipeline/stage3_models/mlruns/669867039821191447/models/m-2a414c1f8a3c446883c5393c2c64b805/artifacts
+flavors:
+  python_function:
+    data: model.ubj
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.11.4
+  xgboost:
+    code: null
+    data: model.ubj
+    model_class: xgboost.sklearn.XGBRegressor
+    model_format: ubj
+    xgb_version: 3.2.0
+mlflow_version: 3.10.1
+model_id: m-2a414c1f8a3c446883c5393c2c64b805
+model_size_bytes: 809322
+model_uuid: m-2a414c1f8a3c446883c5393c2c64b805
+prompts: null
+run_id: 6be0c3c1c9844057b2865569c502e798
+utc_time_created: '2026-04-05 20:00:28.710845'

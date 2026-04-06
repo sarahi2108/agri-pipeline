@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/sarahilyas/agri-pipeline/stage3_models/mlruns/669867039821191447/693ee79c489f461dafbb11dd06fd0806/artifacts
+end_time: 1775418611958
+entry_point_name: ''
+experiment_id: '669867039821191447'
+lifecycle_stage: active
+run_id: 693ee79c489f461dafbb11dd06fd0806
+run_name: xgboost_grapes
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775418482297
+status: 3
+tags: []
+user_id: sarahilyas

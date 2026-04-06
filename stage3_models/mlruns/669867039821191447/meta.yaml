@@ -1,0 +1,7 @@
+artifact_location: file:///Users/sarahilyas/agri-pipeline/stage3_models/mlruns/669867039821191447
+creation_time: 1775418482115
+experiment_id: '669867039821191447'
+last_update_time: 1775418482115
+lifecycle_stage: active
+name: yield_forecaster
+workspace: default

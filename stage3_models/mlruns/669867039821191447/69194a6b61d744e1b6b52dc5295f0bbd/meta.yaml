@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/sarahilyas/agri-pipeline/stage3_models/mlruns/669867039821191447/69194a6b61d744e1b6b52dc5295f0bbd/artifacts
+end_time: 1775418856169
+entry_point_name: ''
+experiment_id: '669867039821191447'
+lifecycle_stage: active
+run_id: 69194a6b61d744e1b6b52dc5295f0bbd
+run_name: xgboost_avocados
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775418649768
+status: 3
+tags: []
+user_id: sarahilyas
