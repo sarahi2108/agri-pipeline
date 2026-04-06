@@ -1,0 +1,7 @@
+artifact_location: file:///Users/sarahilyas/agri-pipeline/stage3_models/mlruns/776583333293716849
+creation_time: 1775472321542
+experiment_id: '776583333293716849'
+last_update_time: 1775472321542
+lifecycle_stage: active
+name: regional_clustering
+workspace: default

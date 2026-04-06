@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/sarahilyas/agri-pipeline/stage3_models/mlruns/776583333293716849/f9e41b0d4d1945889d2d7656d9050cc6/artifacts
+end_time: 1775472322789
+entry_point_name: ''
+experiment_id: '776583333293716849'
+lifecycle_stage: active
+run_id: f9e41b0d4d1945889d2d7656d9050cc6
+run_name: kmeans_regional
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775472322080
+status: 3
+tags: []
+user_id: sarahilyas
