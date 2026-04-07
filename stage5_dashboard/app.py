@@ -198,7 +198,7 @@ with col2:
     crop_slug = selected_crop.lower().replace(" ", "_").replace(",", "")
     shap_path = PLOTS_DIR / f"shap_{crop_slug}.png"
     if shap_path.exists():
-        st.image(str(shap_path), use_column_width=True)
+        st.image(str(shap_path), width=700)
     else:
         st.info(f"No SHAP plot found for {selected_crop}.")
 
